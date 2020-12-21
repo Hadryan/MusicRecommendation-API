@@ -42,13 +42,25 @@ def modelling_recommendation(title, cos_sim, df):
     return recommended_music
 
 def results(music_title):  
-    print(music_title)  
-    find_music = get_music()
-    cos_sim = get_cos_sim(find_music['combine_cleaned'])
-    # print(find_music.title.unique())
-    if music_title not in find_music['title'].unique():
-        return 'Music not in Database'
+    print(music_title)
     
-    else:
+    if music_title == '' or music_title == ' ' or music_title == '  ':
+        return 'Music title cannot be empty'
+    find_music = get_music()
+    list_title = find_music['title'].values.tolist()
+    cos_sim = get_cos_sim(find_music['combine_cleaned'])
+    
+    if find_music['title'].str.contains(music_title).any():
+    
+        for i in range(len(list_title)):
+            tmp_title = list_title[i]
+            if music_title in tmp_title:
+                music_title = tmp_title
+                print(music_title)
+                break
+                
         recommendations = modelling_recommendation(music_title,cos_sim,find_music)
         return recommendations.to_dict('records')
+
+    else:
+        return 'Music not in Database'
