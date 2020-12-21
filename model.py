@@ -5,7 +5,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics.pairwise import linear_kernel
 
 def get_music():
-    df = pd.read_csv('./data_musik.csv')
+    df = pd.read_csv('./data_musik_no_duplicate.csv')
     df = df[["title","artist","top genre","year","bpm","nrgy","dnce","dB","live","val","dur","acous","spch","pop","combine_cleaned"]]
     return df
 
