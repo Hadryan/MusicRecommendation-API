@@ -46,9 +46,7 @@ def results(music_title):
     list_title = find_music['title'].values.tolist()
     cos_sim = get_cos_sim(find_music['combine_cleaned'])
     
-    if music_title == '' or music_title == ' ' or music_title == '  ':
-        return 'Music title cannot be empty'
-    elif find_music['title'].str.contains(music_title).any():
+    if find_music['title'].str.contains(music_title).any():
     
         for i in range(len(list_title)):
             tmp_title = list_title[i]
