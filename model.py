@@ -41,9 +41,7 @@ def modelling_recommendation(title, cos_sim, df):
         
     return recommended_music
 
-def results(music_title):  
-    print(music_title)
-    
+def results(music_title):    
     if music_title == '' or music_title == ' ' or music_title == '  ':
         return 'Music title cannot be empty'
     find_music = get_music()
@@ -56,7 +54,6 @@ def results(music_title):
             tmp_title = list_title[i]
             if music_title in tmp_title:
                 music_title = tmp_title
-                print(music_title)
                 break
                 
         recommendations = modelling_recommendation(music_title,cos_sim,find_music)
